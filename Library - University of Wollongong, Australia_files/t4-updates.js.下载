@@ -1,0 +1,166 @@
+
+
+/** DESIGN ISSUES FIXES **/
+$(document).ready(function() {
+  	/** Pagination **/
+  function setT4Pagination() {
+    if ($('.uw-item-grid--news').length) {
+      $('.t4-pagination a,.t4-pagination > span').each(function(index){
+          var text = $(this).text();
+          $(this).wrap('<li />');
+          if ( text == '>') {
+              $(this).parents('li').addClass('pagination-next button');
+              $(this).html('Next <i class="fa fa-chevron-right"></i>');
+          } else if ( text == '>>') {
+              $(this).parents('li').addClass('hidden');
+          } else if ( text == '<') {
+              $(this).parents('li').addClass('pagination-previous button backward');
+              $(this).html('<i class="fa fa-chevron-left"></i> Previous');
+          } else if ( text == '<<') {
+              $(this).parents('li').addClass('hidden');
+          } else  {
+              $(this).addClass('page');
+          }
+      });
+
+      $('.t4-pagination').wrapInner('<ul class="pagination"></ul>');
+      $('.t4-pagination .currentpage').parents('li').addClass('current');
+
+      var paginationLi = $('.pagination li:not(.span,.hidden,.pagination-next,.pagination-previous)');
+      paginationLi.each(function(){
+          var currentPage = parseInt($('.pagination li.current span').text());
+          var lastPage = parseInt($(paginationLi[paginationLi.length -1]).text());
+          var firstPage = parseInt($(paginationLi[0]).text());
+          var thisPage = parseInt($(this).text());
+          var visibleLinks = 3;
+
+          console.log(thisPage);
+          if ( thisPage == firstPage || thisPage == lastPage) {
+              // do nothing
+          } else if ( thisPage > currentPage + visibleLinks || thisPage < currentPage - visibleLinks) {
+              $(this).remove();
+          } else if ( thisPage == (currentPage + visibleLinks)) {
+              $(this).after ('<li class="ellipsis"></li>')
+          } else if ( thisPage == (currentPage - visibleLinks)) {
+              $(this).before ('<li class="ellipsis"></li>')
+          }
+
+      });
+	}
+  }
+  setT4Pagination();
+
+  
+  	$("body").on("click",".t4-pagination a",function(event){
+      event.preventDefault();
+      var link = $(this).attr("href");
+      var loadArea = $(this).parents('.pagination-top');
+      
+      loadArea.css('opacity',0.5);
+      $.ajax({
+        url: link,
+        context: document.body
+      }).done(function( data) {
+        loadArea.html($(data).find(".pagination-top").html()).css('opacity',1);
+        setT4Pagination();
+        $('html, body').animate({scrollTop: $(".pagination-top").offset().top - $('header').height() }, 1000);
+      });
+    });
+    /** Pagination **/
+  
+  	/** Feature Slider **/
+    $('.uw-home-slider__container > .uw-home-slider__slide:first-child').addClass('is-active');
+    $(".uw-home-slider__bullets button").each(function(index){
+      $(this).attr('data-slide',index);
+    });
+    $('.uw-home-slider__bullets *[data-slide=0]').addClass('is-active');
+	/** Feature Slider **/
+  
+  	/** Image Slider **/
+    $('.orbit-container > .orbit-slide:first-child').addClass('is-active');
+    $(".orbit-bullets button").each(function(index){
+      $(this).attr('data-slide',index);
+    });
+    $('.orbit-bullets *[data-slide=0]').addClass('is-active');
+	/** Image Slider **/
+  
+  	/** Campus Module **/
+    $('.vertical.tabs > .tabs-title:first-child').addClass('is-active');
+    $('.uw-featured-pages > .grid-container > .tabs-content > .tabs-panel:first-child').addClass('is-active');
+  	$('.tabs-content > .tabs-panel:first-child .uw-featured-pages__content').addClass('js-scroll-reveal');
+  	$('.tabs-content > .tabs-panel:first-child .t4-1').addClass('js-scroll-reveal');
+  	$('.tabs-content > .tabs-panel:first-child .t4-2').addClass('js-scroll-reveal');
+  	$('.tabs-content > .tabs-panel:first-child .t4-3').addClass('js-scroll-reveal');
+  	$('.tabs-content > .tabs-panel:first-child .uw-featured-pages__main-feature').addClass('js-scroll-reveal--right');
+  	/** Campus Module **/
+  	
+  	/** Tabs **/
+ 	//$('.tabs.uw-tabs > .tabs-title:first-child').addClass('is-active');
+  	/** Tabs **/
+ 
+  	
+  	/** General Content Red Button Issue **/
+    $('.red-button a,a.red-button').each(function(index){
+      var text = $(this).text();
+      $(this).html(text+'<i class="fas fa-chevron-right"></i>').addClass('button red js-scroll-reveal--left');
+    });
+  	/** General Content Red Button Issue **/
+  	
+});
+/** DESIGN ISSUES FIXES **/
+
+
+
+
+/* Additional UOW stuff  */
+
+
+
+
+// Scroll to anchor on page load (AJ)
+
+function scrollToAnchor(hash) {
+    var target = $(hash),
+        headerHeight = $("#top").height() + 12; // Get fixed header height
+
+    target = target.length ? target : $('[name=' + hash.slice(1) +']');
+
+    if (target.length)
+    {
+        $('html,body').animate({
+            scrollTop: target.offset().top - headerHeight
+        }, 100);
+        return false;
+    }
+}
+
+if(window.location.hash) {
+    scrollToAnchor(window.location.hash);
+}
+
+
+/*
+$("a[href*=\\#]:not([href=\\#])").click(function()
+{
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+        || location.hostname == this.hostname)
+    {
+
+        scrollToAnchor(this.hash);
+    }
+});
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,180 @@
+#uow-feedback {
+  border: dotted 4px #ecc;
+  padding: 25px 0 30px 25px;
+  position: fixed;
+  z-index: 999;
+  right: 10px;
+  top: 140px;
+  width: 220px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#uow-feedback>ul {
+  margin: 0;
+  padding: 0;
+  margin-top: 65px;
+  margin-left: 15px;
+}
+
+#uow-feedback>ul>li {
+  list-style: disc;
+  font-size: 13px;
+  color: #555;
+  padding-left: 6px;
+}
+
+#uow-feedback .close {
+  display: block;
+  margin: 0 0 0 auto;
+  padding:0 2em 1em 1em;
+  cursor: pointer;
+  color: #666;
+  outline: none !important;
+  font-size: 13px;
+}
+
+#uow-bubble:hover {
+  text-decoration: underline;
+}
+
+#uow-bubble {
+  width: 170px;
+  height: 50px;
+  font-size: 15px;
+  background: red;
+  position: fixed;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 15px 0 15px 3px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+#uow-bubble:after {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 10px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-right: 20px solid red;
+  border-bottom: 8px solid transparent;
+}
+
+#uow-feedback-modal {
+  z-index: 9999;
+}
+
+.uow-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.uow-modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  min-height: 50%;
+}
+
+.uxsearch-item {
+  margin: 0;
+  background-color: #fcc;
+  padding: 5px 10px;
+  border: solid 3px #fed;
+  color: #333;
+}
+
+.easy-autocomplete-container {
+  width: 700px;
+  right: 230px;
+  top: -10px;
+  position: absolute;
+}
+
+.easy-autocomplete-container,
+.easy-autocomplete-container>ul,
+.easy-autocomplete-container>ul>li {
+  margin: 0;
+  padding: 0;
+  list-style: none !important;
+}
+
+/* CSS overwrites */
+
+.uw-text-block ul,
+.uw-text-block ul li {
+  list-style-image: none !important;
+  list-style: square !important;
+}
+
+.uw-text-block img {
+  width: auto !important;
+}
+
+/* bug : sub-menu causes links to be unavailable */
+
+.page-navigator__list--pages {
+  height: 20px !important;
+}
+
+/* sorta bug: when we introduced new header / footer, with the div@class="site-container" no longer containing the
+header, things (like the breadcrumb) went a bit haywire */
+
+.uw-breadcrumb-wrapper {
+  padding-top: 75px;
+}
+
+/* Responsive Embed Styles */
+
+.embed-responsive {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.embed-responsive iframe,
+.embed-responsive object,
+.embed-responsive embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.old-rdh-stuff {
+  display: none;
+}
+
+@media print,
+screen and (min-width:48em) {
+  .uw-masthead {
+    margin-top: 77px;
+  }
+}
+
+@media print,
+screen and (min-width:64em) {
+  .uw-masthead {
+    margin-top: 154px;
+  }
+}

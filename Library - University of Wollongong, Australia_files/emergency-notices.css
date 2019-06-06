@@ -1,0 +1,17 @@
+/** Emergency Notice Updates **/
+.uw-alert-banner--warning { background-color: #e26800 }
+.uw-alert-banner--notice { background-color: #3EBDFF }
+.uw-alert-banner--warning,
+.uw-alert-banner--warning a,
+.uw-alert-banner--warning .uw-alert-banner__close,
+.uw-alert-banner--notice,
+.uw-alert-banner--notice a,
+.uw-alert-banner--notice .uw-alert-banner__close{
+color: #FFF;
+}
+.uw-alert-banner--warning a,
+.uw-alert-banner--notice a {
+    text-decoration: underline;
+}
+
+
